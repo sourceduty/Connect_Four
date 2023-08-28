@@ -2,4 +2,4 @@
 
 Cat and mouse themed Connect Four game.
 
-![Connect_Four](https://github.com/sourceduty/Connect_Four/assets/123030236/7b498a27-e7ad-47dc-801a-d94d57120c95)
+![Connect4](https://github.com/sourceduty/Connect_Four/assets/123030236/4096fdfc-58dc-4738-b9f0-bcb3b41a4b59)
