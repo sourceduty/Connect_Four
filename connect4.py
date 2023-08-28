@@ -1,3 +1,12 @@
+#Connect Four Game by Sourceduty
+
+#Redesigned original "connect_python" by python019
+
+#https://github.com/python019/connect_python
+#https://github.com/sourceduty/Connect_Four
+
+#This software is free and open-source; anyone can redistribute it and/or modify it.
+
 import numpy as np
 import pygame
 import sys
@@ -10,6 +19,9 @@ YELLOW = (255,255,0)
 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
+
+REDCIRCLE = pygame.transform.scale(pygame.image.load("Mouse.png"), (100, 100)) # Loading the circle images
+YELLOWCIRCLE = pygame.transform.scale(pygame.image.load("Cat.png"), (100, 100))
 
 def create_board():
 	board = np.zeros((ROW_COUNT,COLUMN_COUNT))
@@ -59,13 +71,13 @@ def draw_board(board):
 		for r in range(ROW_COUNT):
 			pygame.draw.rect(screen, BLUE, (c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE, SQUARESIZE, SQUARESIZE))
 			pygame.draw.circle(screen, BLACK, (int(c*SQUARESIZE+SQUARESIZE/2), int(r*SQUARESIZE+SQUARESIZE+SQUARESIZE/2)), RADIUS)
-	
+            
 	for c in range(COLUMN_COUNT):
 		for r in range(ROW_COUNT):		
 			if board[r][c] == 1:
-				pygame.draw.circle(screen, RED, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), RADIUS)
+				screen.blit(REDCIRCLE, (int(c*SQUARESIZE+SQUARESIZE/2-50), height-int(r*SQUARESIZE+SQUARESIZE/2+50))) # Replaced the pygame.draw.circle with the screen.blit to draw the image
 			elif board[r][c] == 2: 
-				pygame.draw.circle(screen, YELLOW, (int(c*SQUARESIZE+SQUARESIZE/2), height-int(r*SQUARESIZE+SQUARESIZE/2)), RADIUS)
+				screen.blit(YELLOWCIRCLE, (int(c*SQUARESIZE+SQUARESIZE/2-50), height-int(r*SQUARESIZE+SQUARESIZE/2+50))) # Same here
 	pygame.display.update()
 
 
@@ -93,6 +105,7 @@ myfont = pygame.font.SysFont("monospace", 75)
 
 while not game_over:
 
+	pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			sys.exit()
@@ -101,14 +114,13 @@ while not game_over:
 			pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
 			posx = event.pos[0]
 			if turn == 0:
-				pygame.draw.circle(screen, RED, (posx, int(SQUARESIZE/2)), RADIUS)
+				screen.blit(REDCIRCLE, (posx-50, int(SQUARESIZE/2 - 50)))
 			else: 
-				pygame.draw.circle(screen, YELLOW, (posx, int(SQUARESIZE/2)), RADIUS)
+				screen.blit(YELLOWCIRCLE, (posx-50, int(SQUARESIZE/2 - 50)))
 		pygame.display.update()
 
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
-			#print(event.pos)
 			# Ask for Player 1 Input
 			if turn == 0:
 				posx = event.pos[0]
@@ -124,7 +136,7 @@ while not game_over:
 						game_over = True
 
 
-			# # Ask for Player 2 Input
+			# Ask for Player 2 Input
 			else:				
 				posx = event.pos[0]
 				col = int(math.floor(posx/SQUARESIZE))
@@ -137,7 +149,7 @@ while not game_over:
 						label = myfont.render("Player 2 wins!!", 1, YELLOW)
 						screen.blit(label, (40,10))
 						game_over = True
-
+      
 			print_board(board)
 			draw_board(board)
 
