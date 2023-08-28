@@ -1,2 +1,1 @@
-# connect_python
-Connect Four Game in Python
+🎮 Redesigned Connect Four game by Sourceduty.
