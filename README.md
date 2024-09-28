@@ -6,8 +6,6 @@
 
 Cat and mouse themed Connect Four game.
 
-![Connect-4](https://github.com/sourceduty/Connect_Four/assets/123030236/e49d5bfb-1ab4-4ec7-8c69-14927f240cac)
-
 #
 ### Related Links
 
@@ -18,6 +16,10 @@ Cat and mouse themed Connect Four game.
 [Sky Tetris](https://github.com/sourceduty/Sky_Tetris)
 <br>
 [Gaming](https://github.com/sourceduty/Gaming)
+
+#
+
+![Connect-4](https://github.com/sourceduty/Connect_Four/assets/123030236/e49d5bfb-1ab4-4ec7-8c69-14927f240cac)
 
 ***
 ℹ️ This software is free and open-source; anyone can redistribute it and/or modify it.
